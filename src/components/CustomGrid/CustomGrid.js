@@ -33,7 +33,7 @@ export const CustomGrid = ({ temp }) => {
 
       <ResizeObserver
         onResize={({ width }) => {
-          setWidth(width-24);
+          setWidth(Math.floor(width)-15);
         }}
       />
     </>
