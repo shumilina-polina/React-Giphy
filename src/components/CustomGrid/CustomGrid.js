@@ -3,21 +3,18 @@ import { Grid } from "@giphy/react-components";
 import React, { useState } from "react";
 import ResizeObserver from "react-resize-observer";
 
-export const CustomGrid = ({ temp }) => {
+export const CustomGrid = ({ term }) => {
   const [width, setWidth] = useState(0);
-  console.log(width);
-
   const giphy = new GiphyFetch(process.env.REACT_APP_GIPHY_KEY);
 
   const callGiphy = async (offset) => {
-    const res = await giphy.search(`${temp}`, {
+    return await giphy.search(term, {
       offset,
       sort: "relevant",
       lang: "es",
       limit: 10,
       type: "gifs",
     });
-    return res;
   };
 
   return (
@@ -27,13 +24,13 @@ export const CustomGrid = ({ temp }) => {
         columns={3}
         gutter={6}
         fetchGifs={callGiphy}
-        noResultsMessage={"Please, try again"}
+        noResultsMessage={" "}
+        key={Math.random(5)}
         // onGifClick={onGifClick}
       />
-
       <ResizeObserver
         onResize={({ width }) => {
-          setWidth(Math.floor(width)-15);
+          setWidth(Math.floor(width) - 15);
         }}
       />
     </>
