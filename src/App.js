@@ -11,7 +11,8 @@ function App() {
     const inputValue = event.target.value;
     if (inputRegExp.test(inputValue)) {
       setTerm(inputValue.replace(inputRegExp, ""));
-    }
+      input.current.classList.add("input__gif");
+    } else input.current.classList.remove("input__gif");
   };
   // const renderSpan = (term) => {
   //   console.log("hi");
