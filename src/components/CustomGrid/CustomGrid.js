@@ -6,7 +6,6 @@ import ResizeObserver from "react-resize-observer";
 export const CustomGrid = ({ term }) => {
   const [width, setWidth] = useState(0);
   const giphy = new GiphyFetch(process.env.REACT_APP_GIPHY_KEY);
-
   const callGiphy = async (offset) => {
     return await giphy.search(term, {
       offset,
@@ -24,7 +23,7 @@ export const CustomGrid = ({ term }) => {
         columns={3}
         gutter={6}
         fetchGifs={callGiphy}
-        noResultsMessage={" "}
+        noResultsMessage={""}
         key={Math.random(5)}
         // onGifClick={onGifClick}
       />

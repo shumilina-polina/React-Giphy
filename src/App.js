@@ -4,10 +4,21 @@ import { Input } from "./components/Input/Input";
 
 function App() {
   const [term, setTerm] = useState("");
-  
+  const inputRegExp = new RegExp(/^\/gif\s+/);
+  let input = React.createRef();
+
   const listenInput = (event) => {
-    setTerm(event.target.value);
+    const inputValue = event.target.value;
+    if (inputRegExp.test(inputValue)) {
+      setTerm(inputValue.replace(inputRegExp, ""));
+    }
   };
+  // const renderSpan = (term) => {
+  //   console.log("hi");
+  //   if (/^\/gif\s+.*/.test(term)) {
+  //     return <span className="span">/gif</span>;
+  //   }
+  // };
 
   return (
     <div className="App">
@@ -20,7 +31,8 @@ function App() {
           </div>
         </div>
         <div className="input__container">
-          <Input listenInput={listenInput} />
+          {/* {renderSpan(term)} */}
+          <Input listenInput={listenInput} ref={input} />
         </div>
       </section>
     </div>

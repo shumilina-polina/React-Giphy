@@ -1,14 +1,16 @@
 import React from "react";
 import s from "./Input.module.scss";
 
-export const Input = ({value,listenInput}) => {
+export const Input = React.forwardRef(({ listenInput }, ref) => {
   return (
+    <>
       <input
         className={s.input}
         type="text"
-        value={value}
         placeholder="Напишите сообщение…"
         onChange={listenInput}
+        ref={ref}
       />
+    </>
   );
-};
+});
