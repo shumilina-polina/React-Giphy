@@ -4,22 +4,25 @@ import { Input } from "./components/Input/Input";
 
 function App() {
   const [term, setTerm] = useState("");
-  const inputRegExp = new RegExp(/^\/gif\s+/);
+
   let input = React.createRef();
 
   const listenInput = (event) => {
-    const inputValue = event.target.value;
-    if (inputRegExp.test(inputValue)) {
-      setTerm(inputValue.replace(inputRegExp, ""));
+    if (/^\/gif\s+/.test(event.target.value)) {
+      setTerm(event.target.value.replace(/^\/gif\s+/, ""));
       input.current.classList.add("input__gif");
     } else input.current.classList.remove("input__gif");
   };
-  // const renderSpan = (term) => {
-  //   console.log("hi");
-  //   if (/^\/gif\s+.*/.test(term)) {
-  //     return <span className="span">/gif</span>;
-  //   }
-  // };
+
+  const [gifClick, setGifClick] = useState();
+
+  const onGifClick = (gif, event) => {
+    event.preventDefault();
+    setGifClick(gif);
+    setTerm("");
+    input.current.value = "";
+    input.current.classList.remove("input__gif");
+  };
 
   return (
     <div className="App">
@@ -27,12 +30,15 @@ function App() {
         <div className="gif__container">
           <div className="scroll__container">
             <div className="gif__content">
-              <CustomGrid term={term} />
+              <CustomGrid
+                term={term}
+                gifClick={gifClick}
+                onGifClick={onGifClick}
+              />
             </div>
           </div>
         </div>
         <div className="input__container">
-          {/* {renderSpan(term)} */}
           <Input listenInput={listenInput} ref={input} />
         </div>
       </section>
