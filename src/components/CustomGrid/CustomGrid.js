@@ -27,7 +27,7 @@ export const CustomGrid = ({ term, gifClick, onGifClick }) => {
     if (gifClick) {
       if (pattern === "bigHeight") {
         return (
-          <div className={s.gif__container}>
+          <div className={s.gif__single_container}>
             <Gif
               className={s.gif__single}
               gif={gifClick}
@@ -41,9 +41,9 @@ export const CustomGrid = ({ term, gifClick, onGifClick }) => {
         );
       }
       return (
-        <div className={s.gif__container}>
+        <div className={s.gif__single_container}>
           <Gif
-            className={s.singleGif}
+            className={s.gif__single}
             gif={gifClick}
             width={width * 0.8}
             onGifClick={(_, e) => {
@@ -77,13 +77,17 @@ export const CustomGrid = ({ term, gifClick, onGifClick }) => {
   };
 
   return (
-    <>
-      {renderGrid()}
-      <ResizeObserver
-        onResize={({ width }) => {
-          setWidth(Math.floor(width) - 15);
-        }}
-      />
-    </>
+    <div className={s.gif__container}>
+      <div className={s.scroll__container}>
+        <div className={s.gif__content}>
+          {renderGrid()}
+          <ResizeObserver
+            onResize={({ width }) => {
+              setWidth(Math.floor(width) - 15);
+            }}
+          />
+        </div>
+      </div>
+    </div>
   );
 };

@@ -3,7 +3,7 @@ import { CustomGrid } from "./components/CustomGrid/CustomGrid";
 import { Input } from "./components/Input/Input";
 
 function App() {
-  const [term, setTerm] = useState("");
+  const [term, setTerm] = useState("programm");
 
   let input = React.createRef();
 
@@ -27,20 +27,8 @@ function App() {
   return (
     <div className="App">
       <section className="container">
-        <div className="gif__container">
-          <div className="scroll__container">
-            <div className="gif__content">
-              <CustomGrid
-                term={term}
-                gifClick={gifClick}
-                onGifClick={onGifClick}
-              />
-            </div>
-          </div>
-        </div>
-        <div className="input__container">
-          <Input listenInput={listenInput} ref={input} />
-        </div>
+        <CustomGrid term={term} gifClick={gifClick} onGifClick={onGifClick} />
+        <Input listenInput={listenInput} ref={input} />
       </section>
     </div>
   );
