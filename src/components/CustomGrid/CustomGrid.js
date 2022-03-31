@@ -20,14 +20,13 @@ export const CustomGrid = ({ term, gifClick, onGifClick }) => {
   };
 
   const renderGrid = () => {
-    console.log(pattern);
     if (gifClick) {
-      if (pattern === "bigWidth") {
+      if (pattern === "bigHeight") {
         return (
           <Gif
             className={s.singleGif}
             gif={gifClick}
-            height={190}
+            height={width / 1.617}
             onGifClick={(_, e) => {
               e.preventDefault();
             }}
@@ -38,7 +37,7 @@ export const CustomGrid = ({ term, gifClick, onGifClick }) => {
         <Gif
           className={s.singleGif}
           gif={gifClick}
-          width={width * 0.5}
+          width={width * 0.8}
           onGifClick={(_, e) => {
             e.preventDefault();
           }}
@@ -54,7 +53,9 @@ export const CustomGrid = ({ term, gifClick, onGifClick }) => {
         noResultsMessage={""}
         key={Math.random(5)}
         onGifClick={(_, e) => {
-          if (e.target.style.width < e.target.style.height) {
+          const gifWidth = e.target.getAttribute("width");
+          const gifHeight = e.target.getAttribute("height");
+          if (+gifWidth < +gifHeight + 50) {
             setPattern("bigHeight");
           } else {
             setPattern("bigWidth");
