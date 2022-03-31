@@ -8,6 +8,10 @@ export const CustomGrid = ({ term, gifClick, onGifClick }) => {
   const [width, setWidth] = useState(0);
   const [pattern, setPattern] = useState("bigHeight");
 
+  const getCurrentTime = () => {
+    return new Date().toTimeString().replace(/:[0-9]{2,2} .*/, "");
+  };
+
   const giphy = new GiphyFetch(process.env.REACT_APP_GIPHY_KEY);
   const callGiphy = async (offset) => {
     return await giphy.search(term, {
@@ -23,25 +27,31 @@ export const CustomGrid = ({ term, gifClick, onGifClick }) => {
     if (gifClick) {
       if (pattern === "bigHeight") {
         return (
+          <div className={s.gif__container}>
+            <Gif
+              className={s.gif__single}
+              gif={gifClick}
+              height={width / 1.617}
+              onGifClick={(_, e) => {
+                e.preventDefault();
+              }}
+            />
+            <div className={s.gif__time}>{getCurrentTime()}</div>
+          </div>
+        );
+      }
+      return (
+        <div className={s.gif__container}>
           <Gif
             className={s.singleGif}
             gif={gifClick}
-            height={width / 1.617}
+            width={width * 0.8}
             onGifClick={(_, e) => {
               e.preventDefault();
             }}
           />
-        );
-      }
-      return (
-        <Gif
-          className={s.singleGif}
-          gif={gifClick}
-          width={width * 0.8}
-          onGifClick={(_, e) => {
-            e.preventDefault();
-          }}
-        />
+          <div className={s.gif__time}>{getCurrentTime()}</div>
+        </div>
       );
     }
     return (
@@ -55,7 +65,7 @@ export const CustomGrid = ({ term, gifClick, onGifClick }) => {
         onGifClick={(_, e) => {
           const gifWidth = e.target.getAttribute("width");
           const gifHeight = e.target.getAttribute("height");
-          if (+gifWidth < +gifHeight + 50) {
+          if (+gifWidth < +gifHeight + 30) {
             setPattern("bigHeight");
           } else {
             setPattern("bigWidth");
