@@ -45,7 +45,7 @@ export const CustomGrid = ({ term, gifClick, onGifClick }) => {
       }
       return (
         <>
-          <img className={s.gif__user} />
+          <img className={s.gif__user} src="images/avatar.jpeg" />
           <div className={s.gif__single_container}>
             <Gif
               className={s.gif__single}
@@ -71,7 +71,7 @@ export const CustomGrid = ({ term, gifClick, onGifClick }) => {
         onGifClick={(_, e) => {
           const gifWidth = e.target.getAttribute("width");
           const gifHeight = e.target.getAttribute("height");
-          if (+gifWidth < +gifHeight + 40) {
+          if (+gifWidth < +gifHeight + 20) {
             setPattern("bigHeight");
           } else {
             setPattern("bigWidth");
