@@ -3,12 +3,13 @@ import { CustomGrid } from "./components/CustomGrid/CustomGrid";
 import { Input } from "./components/Input/Input";
 
 function App() {
-  const [term, setTerm] = useState("programm");
+  const [term, setTerm] = useState("");
 
   let input = React.createRef();
 
   const listenInput = (event) => {
     if (/^\/gif\s+/.test(event.target.value)) {
+      setGifClick();
       setTerm(event.target.value.replace(/^\/gif\s+/, ""));
       input.current.classList.add("input__gif");
     } else input.current.classList.remove("input__gif");

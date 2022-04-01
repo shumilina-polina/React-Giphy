@@ -27,31 +27,37 @@ export const CustomGrid = ({ term, gifClick, onGifClick }) => {
     if (gifClick) {
       if (pattern === "bigHeight") {
         return (
+          <>
+            <img className={s.gif__user} src="images/avatar.jpeg" />
+            <div className={s.gif__single_container}>
+              <Gif
+                className={s.gif__single}
+                gif={gifClick}
+                height={width / 1.8}
+                onGifClick={(_, e) => {
+                  e.preventDefault();
+                }}
+              />
+              <div className={s.gif__time}>{getCurrentTime()}</div>
+            </div>
+          </>
+        );
+      }
+      return (
+        <>
+          <img className={s.gif__user} />
           <div className={s.gif__single_container}>
             <Gif
               className={s.gif__single}
               gif={gifClick}
-              height={width / 1.617}
+              width={width * 0.7}
               onGifClick={(_, e) => {
                 e.preventDefault();
               }}
             />
             <div className={s.gif__time}>{getCurrentTime()}</div>
           </div>
-        );
-      }
-      return (
-        <div className={s.gif__single_container}>
-          <Gif
-            className={s.gif__single}
-            gif={gifClick}
-            width={width * 0.8}
-            onGifClick={(_, e) => {
-              e.preventDefault();
-            }}
-          />
-          <div className={s.gif__time}>{getCurrentTime()}</div>
-        </div>
+        </>
       );
     }
     return (
@@ -65,7 +71,7 @@ export const CustomGrid = ({ term, gifClick, onGifClick }) => {
         onGifClick={(_, e) => {
           const gifWidth = e.target.getAttribute("width");
           const gifHeight = e.target.getAttribute("height");
-          if (+gifWidth < +gifHeight + 30) {
+          if (+gifWidth < +gifHeight + 40) {
             setPattern("bigHeight");
           } else {
             setPattern("bigWidth");

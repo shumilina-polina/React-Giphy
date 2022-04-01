@@ -2,33 +2,24 @@
 
 @keyframes move {
   0% {
-    transform: translateX(70%);
-  }
-  15% {
-    transform: translateX(5%);
-  }
-  30% {
-    transform: translateX(-5%);
-  }
-  45% {
-    transform: translateX(3%);
-  }
-  60% {
-    transform: translateX(-3%);
-  }
-  75% {
-    transform: translateX(1%);
-  }
-  85% {
-    transform: translateX(-1%);
+    opacity: 0;
   }
   100% {
-    transform: translateX(0);
+    opacity: 1;
   }
+}
+
+.gif__user {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  bottom: 10px;
+  border-radius: 50px;
 }
 
 .gif__container {
   padding: 22px 16px 0px;
+  overflow-x: hidden;
 
   .scroll__container {
     position: relative;
@@ -40,20 +31,12 @@
     padding: 9px 7px 0px 9px;
   }
 
-  // .scroll__container_noborder {
-  //   position: relative;
-  //   width: 100%;
-  //   height: 248px;
-  //   border: 1px solid $base-color;
-  //   border-radius: 1px;
-  //   margin-bottom: 8px;
-  //   padding: 9px 7px 0px 9px;
-  // }
-
   .gif__content {
     width: 100%;
     height: 100%;
     overflow-y: scroll;
+    scrollbar-color: $thumb-color $background-color;
+    scrollbar-width: thin;
 
     &::-webkit-scrollbar {
       background: $background-color;
@@ -64,25 +47,23 @@
       background: $thumb-color;
     }
     .gif__single_container {
+      display: flex;
+      align-items: flex-end;
       position: absolute;
       bottom: 0;
-      left: 0;
+      left: 45px;
       will-change: transform;
-      animation: move 0.5s ease-in-out forwards;
-
-      .gif__single {
-        position: relative;
-      }
+      animation: move 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      background-color: rgba($color: $base-color, $alpha: 0.3);
+      border-radius: 15px;
+      padding: 10px;
 
       .gif__time {
-        position: absolute;
-        transform: translateX(100%);
-        right: -8px;
-        bottom: 0px;
         font-family: "Roboto";
         font-weight: 400;
         font-size: 13px;
         line-height: 17px;
+        margin-left: 8px;
         color: $time-color;
       }
     }
