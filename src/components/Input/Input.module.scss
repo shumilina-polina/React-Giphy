@@ -19,6 +19,10 @@
     text-overflow: ellipsis;
     transition: box-shadow 0.3s ease;
 
+    &::-webkit-calendar-picker-indicator {
+      visibility: hidden;
+    }
+
     &::placeholder {
       color: $placeholder-color;
       opacity: 1;
@@ -30,7 +34,5 @@
         opacity: 0;
       }
     }
-
-    
   }
 }

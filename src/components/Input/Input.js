@@ -9,8 +9,13 @@ export const Input = React.forwardRef(({ listenInput }, ref) => {
         type="text"
         placeholder="Напишите сообщение…"
         onChange={listenInput}
+        list="combinations"
         ref={ref}
       />
+      <datalist id="combinations">
+        <option value="/gif " />
+        <option value="/sticker " />
+      </datalist>
     </div>
   );
 });

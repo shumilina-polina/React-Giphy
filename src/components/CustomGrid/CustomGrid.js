@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import ResizeObserver from "react-resize-observer";
 import s from "./CustomGrid.module.scss";
 
-export const CustomGrid = ({ term, gifClick, onGifClick }) => {
+export const CustomGrid = ({ term, type, gifClick, onGifClick }) => {
   const [width, setWidth] = useState(0);
   const [pattern, setPattern] = useState("bigHeight");
 
@@ -19,7 +19,7 @@ export const CustomGrid = ({ term, gifClick, onGifClick }) => {
       sort: "relevant",
       lang: "es",
       limit: 10,
-      type: "gifs",
+      type: type,
     });
   };
 
