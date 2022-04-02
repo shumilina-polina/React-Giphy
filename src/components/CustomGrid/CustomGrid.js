@@ -8,7 +8,6 @@ export const CustomGrid = ({ term, type, gifClick, onGifClick, gifArr }) => {
   const [width, setWidth] = useState(0);
   const [pattern, setPattern] = useState("bigHeight");
 
-
   const giphy = new GiphyFetch(process.env.REACT_APP_GIPHY_KEY);
   const callGiphy = async (offset) => {
     return await giphy.search(term, {
@@ -24,37 +23,39 @@ export const CustomGrid = ({ term, type, gifClick, onGifClick, gifArr }) => {
     return new Date().toTimeString().replace(/:[0-9]{2,2} .*/, "");
   };
 
-  const renderGrid = () => {
-    if (gifClick && pattern === "bigHeight") {
+  const renderGif = () => {
+    if (pattern === "bigHeight") {
       return (
-        <>
-          <img className={s.gif__user} src="images/avatar.jpeg" />
-          <div className={s.gif__single_container}>
-            <Gif
-              className={s.gif__single}
-              gif={gifClick}
-              height={width / 1.8}
-              onGifClick={(_, e) => {
-                e.preventDefault();
-              }}
-            />
-            <div className={s.gif__time}>{getCurrentTime()}</div>
-          </div>
-        </>
+        <Gif
+          className={s.gif__single}
+          gif={gifClick}
+          height={width / 1.8}
+          onGifClick={(_, e) => {
+            e.preventDefault();
+          }}
+        />
       );
-    } else if (gifClick && pattern === "bigWidth") {
+    } else {
+      return (
+        <Gif
+          className={s.gif__single}
+          gif={gifClick}
+          width={width * 0.7}
+          onGifClick={(_, e) => {
+            e.preventDefault();
+          }}
+        />
+      );
+    }
+  };
+
+  const renderGrid = () => {
+    if (gifClick) {
       return (
         <>
           <img className={s.gif__user} src="images/avatar.jpeg" />
           <div className={s.gif__single_container}>
-            <Gif
-              className={s.gif__single}
-              gif={gifClick}
-              width={width * 0.7}
-              onGifClick={(_, e) => {
-                e.preventDefault();
-              }}
-            />
+            {renderGif()}
             <div className={s.gif__time}>{getCurrentTime()}</div>
           </div>
         </>
