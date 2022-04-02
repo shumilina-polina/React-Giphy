@@ -4,9 +4,10 @@ import React, { useState } from "react";
 import ResizeObserver from "react-resize-observer";
 import s from "./CustomGrid.module.scss";
 
-export const CustomGrid = ({ term, type, gifClick, onGifClick }) => {
+export const CustomGrid = ({ term, type, gifClick, onGifClick, gifArr }) => {
   const [width, setWidth] = useState(0);
   const [pattern, setPattern] = useState("bigHeight");
+
 
   const giphy = new GiphyFetch(process.env.REACT_APP_GIPHY_KEY);
   const callGiphy = async (offset) => {

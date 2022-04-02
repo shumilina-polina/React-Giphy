@@ -6,6 +6,7 @@ function App() {
   const [term, setTerm] = useState("");
   const [comb, setComb] = useState("gifs");
   const [gifClick, setGifClick] = useState();
+  const [gifArr, setGifArr] = useState([]);
 
   let input = React.createRef();
 
@@ -21,6 +22,7 @@ function App() {
       let resRegexp = inputRegexpWithLet.exec(value);
       if (!(resRegexp === null)) setComb(resRegexp[1] + "s");
     }
+
     inputRegexpNoLet.test(value)
       ? input.current.classList.add("input__gif")
       : input.current.classList.remove("input__gif");
@@ -32,6 +34,10 @@ function App() {
     setTerm("");
     input.current.value = "";
     input.current.classList.remove("input__gif");
+
+    let copyGifArr = Object.assign([], gifArr);
+    copyGifArr.push(gif);
+    setGifArr(copyGifArr);
   };
 
   return (
@@ -42,6 +48,7 @@ function App() {
           type={comb}
           gifClick={gifClick}
           onGifClick={onGifClick}
+          gifArr={gifArr}
         />
         <Input listenInput={listenInput} ref={input} />
       </section>
