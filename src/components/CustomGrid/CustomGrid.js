@@ -1,12 +1,12 @@
 import { GiphyFetch } from "@giphy/js-fetch-api";
-import { Gif, Grid } from "@giphy/react-components";
+import { Grid } from "@giphy/react-components";
 import React, { useState } from "react";
 import ResizeObserver from "react-resize-observer";
+import { CustomGif } from "./CustomGif";
 import s from "./CustomGrid.module.scss";
 
 export const CustomGrid = ({ term, type, gifClick, onGifClick, gifArr }) => {
   const [width, setWidth] = useState(0);
-  const [pattern, setPattern] = useState("bigHeight");
 
   const giphy = new GiphyFetch(process.env.REACT_APP_GIPHY_KEY);
   const callGiphy = async (offset) => {
@@ -19,46 +19,16 @@ export const CustomGrid = ({ term, type, gifClick, onGifClick, gifArr }) => {
     });
   };
 
-  const getCurrentTime = () => {
-    return new Date().toTimeString().replace(/:[0-9]{2,2} .*/, "");
-  };
-
-  const renderGif = () => {
-    if (pattern === "bigHeight") {
-      return (
-        <Gif
-          className={s.gif__single}
-          gif={gifClick}
-          height={width / 1.8}
-          onGifClick={(_, e) => {
-            e.preventDefault();
-          }}
-        />
-      );
-    } else {
-      return (
-        <Gif
-          className={s.gif__single}
-          gif={gifClick}
-          width={width * 0.7}
-          onGifClick={(_, e) => {
-            e.preventDefault();
-          }}
-        />
-      );
-    }
-  };
-
-  const renderGrid = () => {
+  const renderGridOrGif = () => {
     if (gifClick) {
       return (
-        <>
-          <img className={s.gif__user} src="images/avatar.jpeg" />
-          <div className={s.gif__single_container}>
-            {renderGif()}
-            <div className={s.gif__time}>{getCurrentTime()}</div>
-          </div>
-        </>
+        <ul>
+          {gifArr.map((gifItem) => {
+            return (
+              <CustomGif key={gifItem.id} gifItem={gifItem} width={width} />
+            );
+          })}
+        </ul>
       );
     }
     return (
@@ -69,16 +39,7 @@ export const CustomGrid = ({ term, type, gifClick, onGifClick, gifArr }) => {
         fetchGifs={callGiphy}
         noResultsMessage={""}
         key={Math.random(5)}
-        onGifClick={(_, e) => {
-          const gifWidth = e.target.getAttribute("width");
-          const gifHeight = e.target.getAttribute("height");
-          if (+gifWidth < +gifHeight + 20) {
-            setPattern("bigHeight");
-          } else {
-            setPattern("bigWidth");
-          }
-          onGifClick(_, e);
-        }}
+        onGifClick={onGifClick}
       />
     );
   };
@@ -87,7 +48,7 @@ export const CustomGrid = ({ term, type, gifClick, onGifClick, gifArr }) => {
     <div className={s.gif__container}>
       <div className={s.scroll__container}>
         <div className={s.gif__content}>
-          {renderGrid()}
+          {renderGridOrGif()}
           <ResizeObserver
             onResize={({ width }) => {
               setWidth(Math.floor(width) - 15);

@@ -35,7 +35,7 @@ function App() {
     input.current.value = "";
     input.current.classList.remove("input__gif");
 
-    let copyGifArr = Object.assign([], gifArr);
+    const copyGifArr = Object.assign([], gifArr);
     copyGifArr.push(gif);
     setGifArr(copyGifArr);
   };
