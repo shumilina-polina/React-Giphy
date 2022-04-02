@@ -5,6 +5,7 @@ import { Input } from "./components/Input/Input";
 function App() {
   const [term, setTerm] = useState("");
   const [comb, setComb] = useState("gifs");
+  const [gifClick, setGifClick] = useState();
 
   let input = React.createRef();
 
@@ -18,8 +19,6 @@ function App() {
       if (!(resRegexp === null)) setComb(resRegexp[1] + "s");
     } else input.current.classList.remove("input__gif");
   };
-
-  const [gifClick, setGifClick] = useState();
 
   const onGifClick = (gif, event) => {
     event.preventDefault();

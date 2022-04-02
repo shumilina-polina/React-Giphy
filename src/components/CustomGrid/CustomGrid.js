@@ -8,10 +8,6 @@ export const CustomGrid = ({ term, type, gifClick, onGifClick }) => {
   const [width, setWidth] = useState(0);
   const [pattern, setPattern] = useState("bigHeight");
 
-  const getCurrentTime = () => {
-    return new Date().toTimeString().replace(/:[0-9]{2,2} .*/, "");
-  };
-
   const giphy = new GiphyFetch(process.env.REACT_APP_GIPHY_KEY);
   const callGiphy = async (offset) => {
     return await giphy.search(term, {
@@ -23,26 +19,29 @@ export const CustomGrid = ({ term, type, gifClick, onGifClick }) => {
     });
   };
 
+  const getCurrentTime = () => {
+    return new Date().toTimeString().replace(/:[0-9]{2,2} .*/, "");
+  };
+
   const renderGrid = () => {
-    if (gifClick) {
-      if (pattern === "bigHeight") {
-        return (
-          <>
-            <img className={s.gif__user} src="images/avatar.jpeg" />
-            <div className={s.gif__single_container}>
-              <Gif
-                className={s.gif__single}
-                gif={gifClick}
-                height={width / 1.8}
-                onGifClick={(_, e) => {
-                  e.preventDefault();
-                }}
-              />
-              <div className={s.gif__time}>{getCurrentTime()}</div>
-            </div>
-          </>
-        );
-      }
+    if (gifClick && pattern === "bigHeight") {
+      return (
+        <>
+          <img className={s.gif__user} src="images/avatar.jpeg" />
+          <div className={s.gif__single_container}>
+            <Gif
+              className={s.gif__single}
+              gif={gifClick}
+              height={width / 1.8}
+              onGifClick={(_, e) => {
+                e.preventDefault();
+              }}
+            />
+            <div className={s.gif__time}>{getCurrentTime()}</div>
+          </div>
+        </>
+      );
+    } else if (gifClick && pattern === "bigWidth") {
       return (
         <>
           <img className={s.gif__user} src="images/avatar.jpeg" />

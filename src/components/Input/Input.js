@@ -5,6 +5,7 @@ export const Input = React.forwardRef(({ listenInput }, ref) => {
   return (
     <div className={s.input__container}>
       <input
+        tabIndex="1"
         className={s.input}
         type="text"
         placeholder="Напишите сообщение…"

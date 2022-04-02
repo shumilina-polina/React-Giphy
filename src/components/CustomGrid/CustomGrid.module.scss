@@ -37,6 +37,13 @@
     overflow-y: scroll;
     scrollbar-color: $thumb-color $background-color;
     scrollbar-width: thin;
+    & a {
+      &:focus,
+      &:hover {
+        box-shadow: 3px 3px 5px #828282;
+        transition: box-shadow 0.3s ease;
+      }
+    }
 
     &::-webkit-scrollbar {
       background: $background-color;
@@ -57,6 +64,13 @@
       background-color: rgba($color: $base-color, $alpha: 0.3);
       border-radius: 15px;
       padding: 10px;
+
+      & a {
+        &:focus,
+        &:hover {
+          box-shadow: none;
+        }
+      }
 
       .gif__time {
         font-family: "Roboto";
