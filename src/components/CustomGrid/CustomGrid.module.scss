@@ -1,14 +1,5 @@
 @import "../../styles/variables.scss";
 
-@keyframes move {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
 .gif__user {
   width: 30px;
   height: 30px;
@@ -60,7 +51,7 @@
       bottom: 0;
       left: 45px;
       will-change: transform;
-      animation: move 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      animation: appear 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
       background-color: rgba($color: $base-color, $alpha: 0.3);
       border-radius: 15px;
       padding: 10px;

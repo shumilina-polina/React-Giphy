@@ -13,6 +13,7 @@ body {
   font-family: "Roboto", sans-serif;
   background: $base-color;
   padding: 50px;
+  overflow: hidden;
 }
 
 .container {
@@ -21,6 +22,8 @@ body {
   padding: 0;
   background: $background-color;
   border-radius: 4px;
+  will-change: transform;
+  animation: move 0.4s cubic-bezier(0.6, 0.3, 0.3, 0.8) forwards;
 
   .input__gif {
     background: $linear-color;

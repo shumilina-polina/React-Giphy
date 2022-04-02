@@ -11,3 +11,32 @@ $linear-color: linear-gradient(
   #9933ff 40%,
   #ff3399 50%
 );
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+// @keyframes move {
+//   0% {
+//     max-width: 0px;
+//   }
+//   100% {
+//     max-width: 437px;
+//   }
+// }
+
+@keyframes move {
+  0% {
+    max-width: 0px;
+    transform: translateX(150%) translateY(150%);
+  }
+  100% {
+    max-width: 437px;
+    transform: translateY(0) translateY(0);
+  }
+}
