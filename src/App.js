@@ -10,14 +10,20 @@ function App() {
   let input = React.createRef();
 
   const listenInput = (event) => {
-    const inputRegexp = new RegExp(/^\/(gif|sticker)\s+/);
-    if (inputRegexp.test(event.target.value)) {
+    const inputRegexpWithLet = new RegExp(/^\/(gif|sticker)\s+\S/);
+    const inputRegexpNoLet = new RegExp(/^\/(gif|sticker)\s+/);
+    const value = event.target.value;
+
+    if (inputRegexpWithLet.test(value)) {
       setGifClick();
-      setTerm(event.target.value.replace(inputRegexp, ""));
-      input.current.classList.add("input__gif");
-      let resRegexp = inputRegexp.exec(event.target.value);
+      setTerm(value.replace(inputRegexpNoLet, ""));
+
+      let resRegexp = inputRegexpWithLet.exec(value);
       if (!(resRegexp === null)) setComb(resRegexp[1] + "s");
-    } else input.current.classList.remove("input__gif");
+    }
+    inputRegexpNoLet.test(value)
+      ? input.current.classList.add("input__gif")
+      : input.current.classList.remove("input__gif");
   };
 
   const onGifClick = (gif, event) => {
