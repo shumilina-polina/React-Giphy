@@ -1,13 +1,5 @@
 @import "../../styles/variables.scss";
 
-.gif__user {
-  width: 30px;
-  height: 30px;
-  position: absolute;
-  // bottom: 10px;
-  border-radius: 50px;
-}
-
 .gif__container {
   padding: 22px 16px 0px;
   overflow-x: hidden;
@@ -28,6 +20,30 @@
     overflow-y: scroll;
     scrollbar-color: $thumb-color $background-color;
     scrollbar-width: thin;
+
+    .gif__list {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-end;
+      min-height: 100%;
+      .gif__list_item {
+        padding: 5px 0;
+        display: flex;
+        align-items: flex-end;
+
+        .gif__user {
+          width: 30px;
+          height: 30px;
+          margin-right: 5px;
+          border-radius: 50px;
+        }
+      }
+    }
+
     & a {
       &:focus,
       &:hover {
@@ -51,9 +67,9 @@
     .gif__single_container {
       display: flex;
       align-items: flex-end;
-      position: absolute;
+      // position: absolute;
       // bottom: 0;
-      left: 45px;
+      // left: 45px;
       will-change: transform;
       animation: appear 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
       background-color: rgba($color: $base-color, $alpha: 0.3);

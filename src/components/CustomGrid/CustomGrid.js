@@ -1,11 +1,13 @@
 import { GiphyFetch } from "@giphy/js-fetch-api";
 import { Grid } from "@giphy/react-components";
-import React, { useState } from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 import ResizeObserver from "react-resize-observer";
 import { CustomGif } from "./CustomGif";
 import s from "./CustomGrid.module.scss";
 
 export const CustomGrid = ({ term, type, gifClick, onGifClick, gifArr }) => {
+  const content = useRef(null);
+
   const [width, setWidth] = useState(0);
 
   const giphy = new GiphyFetch(process.env.REACT_APP_GIPHY_KEY);
@@ -19,10 +21,14 @@ export const CustomGrid = ({ term, type, gifClick, onGifClick, gifArr }) => {
     });
   };
 
+  useLayoutEffect(() => {
+    content.current.scrollTop = content.current.scrollHeight;
+  }, [gifArr]);
+
   const renderGridOrGif = () => {
     if (gifClick) {
       return (
-        <ul>
+        <ul className={s.gif__list}>
           {gifArr.map((gifItem) => {
             return (
               <CustomGif key={gifItem.id} gifItem={gifItem} width={width} />
@@ -47,7 +53,7 @@ export const CustomGrid = ({ term, type, gifClick, onGifClick, gifArr }) => {
   return (
     <div className={s.gif__container}>
       <div className={s.scroll__container}>
-        <div className={s.gif__content}>
+        <div className={s.gif__content} ref={content}>
           {renderGridOrGif()}
           <ResizeObserver
             onResize={({ width }) => {

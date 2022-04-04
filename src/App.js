@@ -10,6 +10,10 @@ function App() {
 
   let input = React.createRef();
 
+  const getCurrentTime = () => {
+    return new Date().toTimeString().replace(/:[0-9]{2,2} .*/, "");
+  };
+
   const listenInput = (event) => {
     const inputRegexpWithLet = new RegExp(/^\/(gif|sticker)\s+\S/);
     const inputRegexpNoLet = new RegExp(/^\/(gif|sticker)\s+/);
@@ -24,8 +28,8 @@ function App() {
     }
 
     inputRegexpNoLet.test(value)
-      ? input.current.classList.add("input__gif")
-      : input.current.classList.remove("input__gif");
+      ? event.target.classList.add("input__gif")
+      : event.target.classList.remove("input__gif");
   };
 
   const onGifClick = (gif, event) => {
@@ -36,6 +40,7 @@ function App() {
     input.current.classList.remove("input__gif");
 
     const copyGifArr = Object.assign([], gifArr);
+    gif.currentTime = getCurrentTime();
     copyGifArr.push(gif);
     setGifArr(copyGifArr);
   };
