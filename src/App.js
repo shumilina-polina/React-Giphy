@@ -10,26 +10,27 @@ function App() {
 
   let input = React.createRef();
 
-  const getCurrentTime = () => {
-    return new Date().toTimeString().replace(/:[0-9]{2,2} .*/, "");
-  };
-
   const listenInput = (event) => {
-    const inputRegexpWithLet = new RegExp(/^\/(gif|sticker)\s+\S/);
-    const inputRegexpNoLet = new RegExp(/^\/(gif|sticker)\s+/);
-    const value = event.target.value;
+    if (event.target.type === "text") {
+      const inputRegexpWithLet = new RegExp(/^\/(gif|sticker)\s+\S/);
+      const inputRegexpNoLet = new RegExp(/^\/(gif|sticker)\s+/);
+      const value = event.target.value;
 
-    if (inputRegexpWithLet.test(value)) {
-      setGifClick();
-      setTerm(value.replace(inputRegexpNoLet, ""));
+      if (inputRegexpWithLet.test(value)) {
+        setGifClick();
+        setTerm(value.replace(inputRegexpNoLet, ""));
 
-      let resRegexp = inputRegexpWithLet.exec(value);
-      if (!(resRegexp === null)) setComb(resRegexp[1] + "s");
+        let resRegexp = inputRegexpWithLet.exec(value);
+        if (!(resRegexp === null)) setComb(resRegexp[1] + "s");
+      }
+
+      inputRegexpNoLet.test(value)
+        ? event.target.classList.add("input__gif")
+        : event.target.classList.remove("input__gif");
+    } else {
+      onGifClick(event.target.files[0], event);
+      event.target.value = "";
     }
-
-    inputRegexpNoLet.test(value)
-      ? event.target.classList.add("input__gif")
-      : event.target.classList.remove("input__gif");
   };
 
   const onGifClick = (gif, event) => {
@@ -40,7 +41,7 @@ function App() {
     input.current.classList.remove("input__gif");
 
     const copyGifArr = Object.assign([], gifArr);
-    gif.currentTime = getCurrentTime();
+    gif.currentTime = new Date().toTimeString().replace(/:[0-9]{2,2} .*/, "");
     copyGifArr.push(gif);
     setGifArr(copyGifArr);
   };

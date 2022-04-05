@@ -29,9 +29,13 @@ export const CustomGrid = ({ term, type, gifClick, onGifClick, gifArr }) => {
     if (gifClick) {
       return (
         <ul className={s.gif__list}>
-          {gifArr.map((gifItem) => {
+          {gifArr.map((gifItem, index) => {
             return (
-              <CustomGif key={gifItem.id} gifItem={gifItem} width={width} />
+              <CustomGif
+                key={gifItem.id || gifItem.lastModified + index}
+                gifItem={gifItem}
+                width={width}
+              />
             );
           })}
         </ul>
@@ -43,7 +47,6 @@ export const CustomGrid = ({ term, type, gifClick, onGifClick, gifArr }) => {
         columns={3}
         gutter={6}
         fetchGifs={callGiphy}
-        noResultsMessage={""}
         key={Math.random(5)}
         onGifClick={onGifClick}
       />

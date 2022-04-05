@@ -67,9 +67,6 @@
     .gif__single_container {
       display: flex;
       align-items: flex-end;
-      // position: absolute;
-      // bottom: 0;
-      // left: 45px;
       will-change: transform;
       animation: appear 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
       background-color: rgba($color: $base-color, $alpha: 0.3);
@@ -94,6 +91,10 @@
         line-height: 17px;
         margin-left: 8px;
         color: $time-color;
+      }
+
+      .gif__upload {
+        object-fit: contain;
       }
     }
   }

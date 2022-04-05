@@ -4,10 +4,20 @@ import s from "./CustomGrid.module.scss";
 
 export const CustomGif = ({ gifItem, width }) => {
   const renderGif = (gifItem) => {
+    if (File.prototype.isPrototypeOf(gifItem)) {
+      return (
+        <img
+          className={s.gif__upload}
+          src={URL.createObjectURL(gifItem)}
+          width={width / 2}
+          height={width / 2}
+          alt="uploaded"
+        />
+      );
+    }
     if (gifItem.images.original.width < gifItem.images.original.height + 30) {
       return (
         <Gif
-          className={s.gif__single}
           gif={gifItem}
           height={width / 2}
           onGifClick={(_, e) => {
@@ -18,7 +28,6 @@ export const CustomGif = ({ gifItem, width }) => {
     } else {
       return (
         <Gif
-          className={s.gif__single}
           gif={gifItem}
           width={width * 0.5}
           onGifClick={(_, e) => {
