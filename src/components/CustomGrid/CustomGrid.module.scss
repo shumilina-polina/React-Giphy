@@ -99,3 +99,33 @@
     }
   }
 }
+
+@media (max-width: 480px) {
+  .gif__container {
+    padding: 16px 12px 0px;
+    .scroll__container {
+      height: 350px;
+    }
+
+    .gif__content {
+      .gif__list {
+        .gif__list_item {
+          .gif__user {
+            width: 25px;
+            height: 25px;
+          }
+        }
+      }
+
+      .gif__single_container {
+        padding: 7px;
+
+        .gif__time {
+          font-size: 9px;
+          line-height: 13px;
+          margin-left: 6px;
+        }
+      }
+    }
+  }
+}

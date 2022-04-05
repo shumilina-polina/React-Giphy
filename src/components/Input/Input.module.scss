@@ -66,3 +66,25 @@
     }
   }
 }
+
+@media (max-width: 480px) {
+  .input__container {
+    padding: 9px 12px;
+
+    .input {
+      padding: 7px 8px;
+      font-size: 11px;
+    }
+    .input__wrapper {
+      .input__file_label {
+        right: 7px;
+        height: 50%;
+
+        .input__file_img {
+          width: 15px;
+          height: 15px;
+        }
+      }
+    }
+  }
+}
