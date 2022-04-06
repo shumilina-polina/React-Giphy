@@ -1,4 +1,5 @@
 import React from "react";
+import { ThemeButton } from "../ThemeButton/ThemeButton";
 import s from "./Input.module.scss";
 import { InputFile } from "./InputFile";
 
@@ -19,8 +20,9 @@ export const Input = React.forwardRef(({ listenInput }, ref) => {
           <option value="/gif " />
           <option value="/sticker " />
         </datalist>
-        <InputFile listenInput={listenInput}/>
+        <InputFile listenInput={listenInput} />
       </div>
+      <ThemeButton />
     </div>
   );
 });

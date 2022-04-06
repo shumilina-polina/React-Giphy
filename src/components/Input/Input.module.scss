@@ -1,19 +1,23 @@
 @import "../../styles/variables.scss";
 
 .input__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
   padding: 13px 16px;
-  border-top: 1px solid $base-color;
-  background: rgba($color: $base-color, $alpha: 0.15);
+  border-top: 1px solid var(#{--body-background-default});
+  background: rgba($color: var(#{--body-background-default}), $alpha: 0.15);
 
   .input {
     width: 100%;
     height: 100%;
     padding: 9.5px 12px;
-    border: 1px solid $base-color;
     border-radius: 6px;
+    border: 1px solid var(#{--border-default});
+    background: inherit;
     outline: none;
-    color: $text-color;
+    color: var(#{--text-color-default});
     font-size: 13px;
     font-weight: 400;
     text-overflow: ellipsis;
@@ -24,7 +28,7 @@
     }
 
     &::placeholder {
-      color: $placeholder-color;
+      color: var(#{--placeholder-color-default});
       opacity: 1;
       transition: opacity 0.3s ease;
     }
@@ -37,7 +41,11 @@
   }
 
   .input__wrapper {
+    width: 100%;
+    margin-right: 5px;
     position: relative;
+    background: var(#{--input-background-default});
+    border-radius: 6px;
 
     .input__file_label {
       position: absolute;
@@ -46,19 +54,19 @@
       right: 12px;
       height: 55%;
       outline: none;
-      opacity: 0.5;
       transition: opacity 0.4s ease;
       cursor: pointer;
 
       &:focus,
       &:hover {
-        opacity: 0.9;
+        opacity: 0.6;
         transition: opacity 0.4s ease;
       }
     }
     .input__file_img {
       width: 20px;
       height: 20px;
+      vertical-align: middle;
     }
 
     input[type="file"] {

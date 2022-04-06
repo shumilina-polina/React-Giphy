@@ -11,7 +11,7 @@
 body {
   position: relative;
   font-family: "Roboto", sans-serif;
-  background: $base-color;
+  background: var(#{--body-background-default});
   padding: 50px;
   overflow-x: hidden;
 }
@@ -20,16 +20,16 @@ body {
   max-width: 437px;
   margin: 0 auto;
   padding: 0;
-  background: $background-color;
+  background: var(#{--container-color-default});
   border-radius: 4px;
   will-change: transform;
   animation: move 0.4s cubic-bezier(0.6, 0.3, 0.3, 0.8) forwards;
 
   .input__gif {
-    background: $linear-color;
+    background: var(#{--linear-default});
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    color: #9933ff;
+    color: #cc99ff;
     font-weight: 600;
   }
 }

@@ -1,0 +1,26 @@
+@import "../../styles/variables.scss";
+
+.button__theme {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: opacity 0.4s ease;
+
+  &:focus,
+  &:hover {
+    outline: none;
+    opacity: 0.6;
+    will-change: opacity;
+    transition: opacity 0.4s ease;
+  }
+
+  .img__theme {
+    vertical-align: middle;
+    width: 29px;
+    height: 29px;
+  }
+}
+
+@media (max-width: 480px) {
+}

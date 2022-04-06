@@ -1,16 +1,84 @@
-$base-color: #d3d9de;
-$text-color: #000;
 $background-color: #fff;
-$placeholder-color: #828282;
-$thumb-color: #dae2ea;
-$time-color: #99a2ad;
-$linear-color: linear-gradient(
-  to bottom right,
-  #2ee6a8 10%,
-  #3399ff 20%,
-  #9933ff 40%,
-  #ff3399 50%
+
+$body-background-light: #d3d9de;
+$body-background-dark: #9c9c9c;
+
+$text-color-light: #000;
+$text-color-dark: #fff;
+
+$container-color-light: #fff;
+$container-color-dark: #5c5c5c;
+
+$input-background-light: #fff;
+$input-background-dark: #757575;
+
+$linear-light: linear-gradient(
+  135deg,
+  rgba(46, 230, 168, 1) 3%,
+  rgba(51, 153, 255, 1) 9%,
+  rgba(153, 51, 255, 1) 14%,
+  rgba(255, 51, 153, 1) 20%
 );
+$linear-dark: linear-gradient(
+  135deg,
+  rgba(143, 238, 206, 1) 3%,
+  rgba(157, 206, 255, 1) 9%,
+  rgba(211, 166, 255, 1) 14%,
+  rgba(255, 159, 207, 1) 20%
+);
+
+$placeholder-color-light: #828282;
+$placeholder-color-dark: rgba(
+  $color: #fff,
+  $alpha: 0.7,
+);
+
+$time-color-light: #99a2ad;
+$time-color-dark: #5c5c5c;
+
+$thumb-color-light: #dae2ea;
+$thumb-color-dark: #5c5c5c;
+
+$border-light: #ccd2d8;
+$border-dark: #5c5c5c;
+:root {
+  --body-background-light: #{$body-background-light};
+  --body-background-dark: #{$body-background-dark};
+  --body-background-default: var(#{--body-background-light});
+
+  --text-color-light: #{$text-color-light};
+  --text-color-dark: #{$text-color-dark};
+  --text-color-default: var(#{--text-color-light});
+
+  --container-color-light: #{$container-color-light};
+  --container-color-dark: #{$container-color-dark};
+  --container-color-default: var(#{--container-color-light});
+
+  --input-background-light: #{$input-background-light};
+  --input-background-dark: #{$input-background-dark};
+  --input-background-default: var(#{--input-background-light});
+
+  --linear-light: #{$linear-light};
+  --linear-dark: #{$linear-dark};
+  --linear-default: var(#{--linear-light});
+
+  --placeholder-color-light: #{$placeholder-color-light};
+  --placeholder-color-dark: #{$placeholder-color-dark};
+  --placeholder-color-default: var(#{--placeholder-color-light});
+
+  --time-color-light: #{$time-color-light};
+  --time-color-dark: #{$time-color-dark};
+  --time-color-default: var(#{--time-color-light});
+
+  --thumb-color-light: #{$thumb-color-light};
+  --thumb-color-dark: #{$thumb-color-dark};
+  --thumb-color-default: var(#{--thumb-color-light});
+  
+  --border-light: #{$border-light};
+  --border-dark: #{$border-dark};
+  --border-default: var(#{--border-light});
+
+}
 
 @keyframes appear {
   0% {

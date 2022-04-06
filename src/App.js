@@ -57,6 +57,7 @@ function App() {
           gifArr={gifArr}
         />
         <Input listenInput={listenInput} ref={input} />
+        {/* <ThemeButton /> */}
       </section>
     </div>
   );
