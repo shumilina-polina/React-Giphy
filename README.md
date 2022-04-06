@@ -12,7 +12,7 @@ Interface for searching GIFs and stickers with imitation of sending to a chat.
 * Enter the search keywords, scroll down and click to send
 * Attach your own file in _png_, _jpeg_ or _gif_ format
 * Change the theme from light to dark
-* Keyboard control if necessary
+* Keyboard control is supported
 
 The application uses the [GIPHY SDK](https://developers.giphy.com/docs/sdk).
 
@@ -28,6 +28,6 @@ The application uses the [GIPHY SDK](https://developers.giphy.com/docs/sdk).
 * После пробела введите ключевые слова для поиска, прокрутите вниз и кликните по нужному изображению для отправки
 * Прикрепите свой файл в формате _png_, _jpeg_ или _gif_
 * Смените тему со светлой на темную
-* При необходимость управляйте с клавиатуры
+* Поддерживается управление с клавиатуры
 
 В приложении используется [GIPHY SDK](https://developers.giphy.com/docs/sdk).
