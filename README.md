@@ -2,6 +2,8 @@
 
 Interface for searching GIFs and stickers with imitation of sending to a chat.
 
+[react-giphy-searching.herokuapp.com](https://react-giphy-searching.herokuapp.com/)
+
 ![prev](https://user-images.githubusercontent.com/63950558/162023320-ccd2898f-bcd4-4831-bbac-b12d531c41a6.gif)
 
 ## Description
